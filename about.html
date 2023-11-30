@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <title>About page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&family=Poppins:wght@200;300;400;600&family=Quicksand:wght@300;400;500;600;700&family=Urbanist:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="https://i.ibb.co/pwsj940/favicon.png"">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <bod>
+    <!-- ========== Start NAVBAR Section ========== -->
+    <header class="section-navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="index.html">
+            <img 
+            src="https://i.postimg.cc/V6kV6TYC/ic-logo.png"
+            alt="logo"
+            width="75%"
+            height="50%"
+            style="padding-top: 10px;"
+          >
+          </a>
+        </div>
+        <nav class="navbar">
+          <ul>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html"> home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html"> about </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Course.html"> Courses </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html"> blog </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Roadmaps</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"> contact </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="form-open">Login</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  
+
+    <!-- ========== End NAVBAR Section ========== -->
+
+     <!--Form Login section-->
+
+     <section class="home">
+      <div class="form_container">
+        <i class="uil uil-times form_close"></i>
+        <!-- Login From -->
+        <div class="form login_form">
+          <form action="#">
+            <h2>Login</h2>
+            <div class="input_box">
+              <input type="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Enter your password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="option_field">
+              <span class="checkbox">
+                <input type="checkbox" id="check" />
+                <label for="check">Remember me</label>
+              </span>
+              <a href="#" class="forgot_pw" style="color: black;font-size: 15px;">Forgot password?</a>
+            </div>
+            <button class="button">Login Now</button>
+            <div class="login_signup">Don't have an account? <a href="#" id="signup" style="font-size: 15px;color: black;">Signup</a></div>
+          </form>
+        </div>
+        <!-- Signup From -->
+        <div class="form signup_form">
+          <form action="#">
+            <h2>Signup</h2>
+            <div class="input_box">
+              <input type="email" placeholder="Enter your email" required />
+              <i class="uil uil-envelope-alt email"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Create password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <div class="input_box">
+              <input type="password" placeholder="Confirm password" required />
+              <i class="uil uil-lock password"></i>
+              <i class="uil uil-eye-slash pw_hide"></i>
+            </div>
+            <button class="button">Signup Now</button>
+            <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+
+    <!--From Ends here-->
+
+
+    <!-- ========== Start about Section ========== -->
+
+    <section class="section-about">
+      <div class="container">
+        <h2 class="section-common-heading">About CodeMasters</h2>
+        <p class="section-common-subheading">
+          Guiding Your Learning Journey through Research, Design, and
+          Development Excellence.
+        </p>
+      </div>
+
+      <div class="container grid grid-three--cols">
+        <div class="about-div">
+          <div class="icon">
+            <img src="images/research.png" alt="CodeMasters" />
+          </div>
+          <h3 class="section-common--title">Research</h3>
+          <p>
+            We start by learning what you need. We look at what's new and
+            exciting in learning and choose topics that match what you want to
+            learn.
+          </p>
+        </div>
+
+        <div class="about-div">
+          <div class="icon">
+            <img src="images/design.png" alt="CodeMasters" />
+          </div>
+          <h3 class="section-common--title">Design</h3>
+          <p>
+            Next, we make the lessons. We make them fun and interesting for you.
+            We make sure they work for different ways people like to learn.
+          </p>
+        </div>
+
+        <div class="about-div">
+          <div class="icon">
+            <img src="images/Coding.png" alt="CodeMasters" />
+          </div>
+          <h3 class="section-common--title">Development</h3>
+          <p>
+            After that, we turn the lessons into things you can use online. We
+            use the latest tools to make sure they work well and make you happy.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== End about Section ========== -->
+
+    <!-- ========== Start contact home Section ========== -->
+
+    <div class="section-contact--homepage" id="section-contact--homepage">
+      <div class="container grid grid-two--cols">
+        <div class="contact-content">
+          <h2 class="contact-title">Let's revolutionize the way you study</h2>
+          <p>Join our free bootcamps to know us better</p>
+          <div class="btn">
+            <a href="contact.html">
+              start now <i class="fa-solid fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="contact-image">
+          <img src="images/main.png" alt="a guy doing coding" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== End contact home Section ========== -->
+
+    <!-- ========== Start   FOOTER Section ========== -->
+
+    <footer>
+      <div class="container grid grid-four--cols">
+        <div class="footer-1--div">
+          <div class="logo-brand">
+            <a href="index.html" class="footer-subheading">CodeMasters</a>
+          </div>
+          <p>Let's revolutionize the way you study with CodeMasters</p>
+
+          <div class="social-footer--icons">
+            <a href="#" target="_blank">
+              <i class="fa-brands fa-discord"></i>
+            </a>
+            <a href="#" target="_blank">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="#" target="_blank">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-2--div">
+          <p class="footer-subheading">Courses</p>
+          <ul>
+            <li><a href="index.html"> CSS </a></li>
+            <li><a href="index.html"> CSS3 </a></li>
+            <li><a href="index.html"> CSS </a></li>
+            <li><a href="index.html"> CSS </a></li>
+            <li><a href="index.html"> CSS </a></li>
+          </ul>
+        </div>
+
+        <div class="footer-3--div">
+          <p class="footer-subheading">Links</p>
+          <ul>
+            <li><a href="index.html"> home </a></li>
+            <li><a href="index.html"> home </a></li>
+            <li><a href="index.html"> home </a></li>
+            <li><a href="index.html"> home </a></li>
+            <li><a href="index.html"> home </a></li>
+          </ul>
+        </div>
+
+        <div class="footer-4--div">
+          <p class="footer-subheading">Blogs</p>
+          <ul>
+            <li><a href="index.html"> HTML </a></li>
+            <li><a href="index.html"> HTML </a></li>
+            <li><a href="index.html"> HTML </a></li>
+            <li><a href="index.html"> HTML </a></li>
+            <li><a href="index.html"> HTML </a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========== End   FOOTER Section ========== -->
+  </bod>
+</html>
