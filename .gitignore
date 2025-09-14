@@ -1,0 +1,101 @@
+# Full-Stack Boilerplate Project - Root .gitignore
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Environment variables (IMPORTANT - keeps sensitive data safe)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Firebase sensitive files
+*firebase-adminsdk*.json
+serviceAccountKey.json
+firebase-config.js
+
+# Production builds
+build/
+dist/
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output
+
+# Temporary folders
+tmp/
+temp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+*~
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# MongoDB data directories
+data/
+dump/
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+
+# Upload directories
+uploads/
+files/
+
+# Package manager lock files (uncomment if you want to ignore them)
+# package-lock.json
+# yarn.lock
+
+# Test results
+test-results/
+
+# Storybook build outputs
+.out
+.storybook-out
