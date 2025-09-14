@@ -20,6 +20,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isGoogleAuthInProgress, setIsGoogleAuthInProgress] = useState(false);
 
   // Load user from localStorage on mount
   useEffect(() => {
@@ -36,22 +37,31 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser && firebaseUser.providerData[0]?.providerId === 'google.com') {
+        console.log('Firebase user detected:', firebaseUser.email);
+        setIsGoogleAuthInProgress(true);
+        
         try {
           // Get Firebase ID token
           const idToken = await getCurrentUserToken();
           
           if (idToken) {
+            console.log('Got Firebase ID token, sending to backend...');
             // Send to backend for verification and JWT creation
             const response = await authAPI.googleAuth(idToken);
             
             if (response.data.success) {
               const { user: userData, token } = response.data;
               
+              console.log('Backend auth successful:', userData);
+              
               // Store user and token
               localStorage.setItem('user', JSON.stringify(userData));
               localStorage.setItem('authToken', token);
               setUser(userData);
               setError(null);
+              
+              // Trigger a custom event for navigation
+              window.dispatchEvent(new CustomEvent('googleAuthSuccess'));
             }
           }
         } catch (error) {
@@ -59,12 +69,17 @@ export const AuthProvider = ({ children }) => {
           setError('Google authentication failed');
           // Sign out from Firebase if backend auth fails
           auth.signOut();
+        } finally {
+          setIsGoogleAuthInProgress(false);
         }
+      } else if (!firebaseUser && isGoogleAuthInProgress) {
+        // User signed out or auth failed
+        setIsGoogleAuthInProgress(false);
       }
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [isGoogleAuthInProgress]);
 
   // Login with email/password
   const login = async (email, password) => {
@@ -120,6 +135,20 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Google Sign-in (to be called from components)
+  const signInWithGoogle = async () => {
+    try {
+      setIsGoogleAuthInProgress(true);
+      setError(null);
+      // Firebase auth state change will handle the backend communication
+      return { success: true };
+    } catch (error) {
+      setIsGoogleAuthInProgress(false);
+      setError('Google sign-in failed');
+      return { success: false, error: 'Google sign-in failed' };
+    }
+  };
+
   // Logout
   const logout = async () => {
     try {
@@ -158,13 +187,15 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     user,
-    loading,
+    loading: loading || isGoogleAuthInProgress,
     error,
     login,
     signup,
+    signInWithGoogle,
     logout,
     refreshUser,
     isAuthenticated: !!user,
+    isGoogleAuthInProgress,
   };
 
   return (
