@@ -96,6 +96,74 @@ export const tasksAPI = {
   addComment: (id, comment) => api.post(`/api/tasks/${id}/comments`, comment),
 };
 
+// Store API calls
+export const storeAPI = {
+  // Get all stores
+  getAll: () => api.get('/api/stores'),
+  
+  // Get single store
+  getById: (storeId) => api.get(`/api/stores/${storeId}`),
+  
+  // Create new store
+  create: (storeData) => api.post('/api/stores', storeData),
+  
+  // Update store
+  update: (storeId, storeData) => api.put(`/api/stores/${storeId}`, storeData),
+  
+  // Delete store
+  delete: (storeId) => api.delete(`/api/stores/${storeId}`),
+};
+
+// Footfall API calls
+export const footfallAPI = {
+  // Ingest footfall data
+  ingest: (storeId, data) => api.post('/api/footfall/ingest', { storeId, ...data }),
+  
+  // Get latest footfall data
+  getLatest: (storeId) => api.get(`/api/footfall/latest/${storeId}`),
+  
+  // Get window statistics
+  getWindowStats: (storeId, minutes = 60) => 
+    api.get(`/api/footfall/window/${storeId}?minutes=${minutes}`),
+  
+  // Get historical data
+  getHistory: (storeId, params = {}) => {
+    const queryParams = new URLSearchParams(params);
+    return api.get(`/api/footfall/history/${storeId}?${queryParams.toString()}`);
+  },
+  
+  // Get analytics data
+  getAnalytics: (storeId, period = 'today', groupBy = 'hour') => 
+    api.get(`/api/footfall/analytics/${storeId}?period=${period}&groupBy=${groupBy}`),
+};
+
+// Alert API calls
+export const alertAPI = {
+  // Get all alerts
+  getAll: (params = {}) => {
+    const queryParams = new URLSearchParams(params);
+    return api.get(`/api/alerts?${queryParams.toString()}`);
+  },
+  
+  // Get single alert
+  getById: (id) => api.get(`/api/alerts/${id}`),
+  
+  // Create new alert
+  create: (alertData) => api.post('/api/alerts', alertData),
+  
+  // Acknowledge alert
+  acknowledge: (id) => api.put(`/api/alerts/${id}/acknowledge`),
+  
+  // Resolve alert
+  resolve: (id) => api.put(`/api/alerts/${id}/resolve`),
+  
+  // Delete alert
+  delete: (id) => api.delete(`/api/alerts/${id}`),
+  
+  // Get alert statistics
+  getStats: (storeId) => api.get(`/api/alerts/stats/${storeId}`),
+};
+
 // Health check
 export const healthCheck = () => api.get('/health');
 

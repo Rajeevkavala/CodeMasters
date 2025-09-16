@@ -10,6 +10,9 @@ dotenv.config();
 const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/projects');
 const taskRoutes = require('./routes/tasks');
+const storeRoutes = require('./routes/stores');
+const footfallRoutes = require('./routes/footfall');
+const alertRoutes = require('./routes/alerts');
 
 // Initialize Express app
 const app = express();
@@ -31,25 +34,19 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fullstack
 .then(() => console.log('✅ MongoDB connected successfully'))
 .catch((err) => console.error('❌ MongoDB connection error:', err));
 
-// Routes
+// writing my own API routes
 app.use('/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
+app.use('/api/stores', storeRoutes);
+app.use('/api/footfall', footfallRoutes);
+app.use('/api/alerts', alertRoutes);
 
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.status(200).json({ 
-    message: 'Server is running!', 
-    timestamp: new Date().toISOString() 
-  });
-});
 
-// 404 handler
 app.use('*', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ 
@@ -58,10 +55,11 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server
+
+// Starting the express server.
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/health`);
+  console.log(` http://localhost:${PORT}/health`);
 });
 
 module.exports = app;

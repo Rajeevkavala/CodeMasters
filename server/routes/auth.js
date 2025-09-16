@@ -7,10 +7,10 @@ const { authMiddleware } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-// JWT secret
+// JWT secret token for authentication 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-fallback-secret-key';
 
-// Generate JWT token
+// Generate JWT token 
 const generateToken = (userId) => {
   return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '7d' });
 };
@@ -24,7 +24,7 @@ router.post('/signup', [
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
 ], async (req, res) => {
   try {
-    // Check for validation errors
+    // checking for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
@@ -36,7 +36,7 @@ router.post('/signup', [
 
     const { name, email, password } = req.body;
 
-    // Check if user already exists
+    // checking if user is already present in the database
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
@@ -45,7 +45,7 @@ router.post('/signup', [
       });
     }
 
-    // Create new user
+    // Creating a new user if they wont exist
     const user = new User({
       name,
       email,

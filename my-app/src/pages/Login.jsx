@@ -63,7 +63,11 @@ const Login = () => {
       await signInWithGoogle();
       // Trigger Firebase popup
       await signInWithGooglePopup();
+<<<<<<< Updated upstream
       // Navigation will be handled by the custom event
+=======
+      navigate('/dashboard');
+>>>>>>> Stashed changes
     } catch (error) {
       console.error('Google sign-in error:', error);
       setError('Google sign-in failed. Please try again.');
